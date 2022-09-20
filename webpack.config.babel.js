@@ -1,7 +1,6 @@
 import { resolve } from "path";
 import webpack from "webpack";
 import HTMLWebpackPlugin from "html-webpack-plugin";
-import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 import rules from "./webpack.loaders";
 import ENV from "./ENV.json";
 
@@ -42,16 +41,6 @@ if (isLocal) {
       template: "./src/demo/index.html",
       inject: "body",
       chunksSortMode: "none"
-    })
-  ]);
-}
-
-if (isProd) {
-  plugins = plugins.concat([
-    new BundleAnalyzerPlugin({
-      analyzerMode: "static",
-      openAnalyzer: true,
-      reportFilename: resolve(__dirname, "report/bundle-analyzer.html")
     })
   ]);
 }
